@@ -13,17 +13,17 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error('Error logging out:', error.message);
-    } else {
-      // Optionally, redirect or show a message after logout
-      console.log('Logged out successfully');
-      // You can redirect to the home page or another page if needed
-      window.location.href = '/'; // Redirect to home page
-    }
-  };
+  // const handleLogout = async () => {
+  //   const { error } = await supabase.auth.signOut();
+  //   if (error) {
+  //     console.error('Error logging out:', error.message);
+  //   } else {
+  //     // Optionally, redirect or show a message after logout
+  //     console.log('Logged out successfully');
+  //     // You can redirect to the home page or another page if needed
+  //     window.location.href = '/'; // Redirect to home page
+  //   }
+  // };
 
   return (
     <nav className={styles.navbar}>
@@ -62,7 +62,7 @@ const Navbar = () => {
             Contact
           </Link>
           <button 
-            onClick={handleLogout} 
+            // onClick={handleLogout} 
             className={styles.navLink}
           >
             Logout

@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { useState, useEffect } from 'react';
 import { DatePicker } from "@nextui-org/date-picker";
-import { now, parseAbsoluteToLocal } from "@internationalized/date";
+import { parseAbsoluteToLocal } from "@internationalized/date";
 import React from "react";
-// import {NextUIProvider} from "@nextui-org/react";
+import { I18nProvider } from "@react-aria/i18n";
+
+
 // import {Calendar as CalendarIcon} from "lucide-react";
 
 
@@ -35,29 +37,22 @@ export default function SalesReport() {
     
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     
-      <main className="flex flex-col gap-2 row-start-2  bg-orange-100">
-
-      <DatePicker
-            granularity="day"
-            
-            // label="Pick date"
-            className="max-w-[120px] p-2 self-center" 
-            variant="flat"
-            // description={"pick date on calendar icon"}
-            labelPlacement="inside"
-            size="lg"
-            value={date}
-            onChange={setDate}
-            // visibleMonths={3}
-            classNames={{
-              calendar: "bg-white [&_.disabled-date]:text-gray-500 !important [&_button[disabled]]:text-gray-500 !important",
-            
-            }}
-        />
-      
-        <div className="flex flex-col gap-4 bg-blue-100">
-
-          <h1 className="text-2xl font-bold">Daily Sales Report</h1>
+      <main className="flex flex-col gap-2 row-start-2" >
+      <I18nProvider locale="sr-SR">
+          <DatePicker
+                granularity="day"
+                label="Pick date"
+                className="max-w-[120px] p-2 self-center" 
+                variant="flat"
+                description={"pick date on calendar icon"}
+                labelPlacement="inside"
+                size="lg"
+                value={date}
+                onChange={setDate}
+            />
+      </I18nProvider>
+        <div className="flex flex-col gap-4">
+          <h1 style={  { textAlign: 'center', fontWeight: 'bold', backgroundColor: '#cce3fd' }}>Daily Sales Report</h1>
           <DailySales date={formattedDate} />
         </div>
       </main>
@@ -117,7 +112,7 @@ function DailySales({ date }: { date: string }) {
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse">
           <thead>
-            <tr className="bg-blue-400">
+            <tr style={{ backgroundColor: '#99c7fb' }}>
               <th className="p-2 text-left">Store</th>
               <th className="p-2 text-right">Receipts</th>
               <th className="p-2 text-right">Sales</th>
@@ -131,7 +126,7 @@ function DailySales({ date }: { date: string }) {
                 <td className="p-2 text-right">{store.Pazar}</td>
               </tr>
             ))}
-            <tr className="font-bold bg-blue-400">
+            <tr style={{ backgroundColor: '#99c7fb' }}>
               <td className="p-2">Total</td>
               <td className="p-2 text-right">
                 {salesData.result1.reduce((acc, store) => acc + store.BrojRacuna, 0)}
