@@ -1,6 +1,7 @@
 import {nextui} from '@nextui-org/theme';
 import type { Config } from "tailwindcss";
 
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +9,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/components/(date-picker|button|ripple|spinner|calendar|date-input|popover).js"
   ],
+
   theme: {
     extend: {
       colors: {
@@ -16,6 +18,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui()],  
+  
 };
+
+
 export default config;

@@ -1,11 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 # datalab-pantheon-client-v2
+![alt text](image.png)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+cp example.env .env
+# enter corect values for server side
 npm run dev
 # or
 yarn dev
@@ -17,19 +20,52 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# DEMO light client for made in Nextjs 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Overview
 
-## Learn More
+A simple client created in nexjs demonstrates the connection to the MsSQL server, using a stored procedure that returns the given data that is then distributed through the API. 
+(https://github.com/vladimirkonrad/Datalab-Pantheon-API)
+ And in the second part, the client accepts the data in JSON and displays it with an additional query.
+The example shows the daily sales of multiple stores, and the date selection can also be viewed for earlier periods.
+The data was based on DataLab Pantheon, perhaps the most popular and complete ERP application used in the region of the former Yugoslavia.
 
-To learn more about Next.js, take a look at the following resources:
+## API Response
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The API returns a response object that conforms to the `ApiResponse` interface, which contains two properties:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* `result1`: an array of `SalesData` objects
+* `result2`: a single `TotalSales` object
 
+## Sales Data
+
+The `SalesData` interface represents a single sales data record with the following properties:
+
+* `MP`
+* `Naziv`
+* `BrojRacuna`
+* `Pazar`
+* `PazarNoFormat`
+
+## Total Sales
+
+The `TotalSales` interface represents a single total sales record with the following properties:
+
+* `Pazar`
+* `PazarNoFormat`
+
+## Getting Started
+
+To get started with this project, please refer to the documentation for the API endpoint and the `ApiResponse` interface.
+For server side check https://github.com/vladimirkonrad/Datalab-Pantheon-API 
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request with your changes.
+
+## License
+
+[Insert license information here]
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
