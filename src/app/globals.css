@@ -22,3 +22,6 @@ body {
 .custom-row-spacing {
   padding-bottom: 20px;
 }
+.custom-row-spacing {
+  border-bottom: 1px solid #ccc; /* Adjust color and thickness as needed */
+}
